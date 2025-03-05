@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coaches</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Coaches</h1>
+    </header>
+
+    <form method="GET" action="{{ url_for('coaches') }}">
+        <label for="sortBy">Sort By:</label>
+        <select name="sortBy">
+            <option value="experience">Experience (Years)</option>
+            <option value="age">Age</option>
+        </select>
+
+        <label for="order">Order:</label>
+        <select name="order">
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+        </select>
+
+        <button type="submit">Apply</button>
+    </form>
+
+    {% for coach in coaches %}
+        <div class="card">
+            <h3>{{ coach.name }}</h3>
+            <p>Experience: {{ coach.experience }} years</p>
+            <p>Age: {{ coach.age }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

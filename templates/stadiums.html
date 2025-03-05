@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stadiums</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Stadiums</h1>
+    </header>
+
+    <form method="GET" action="{{ url_for('stadiums') }}">
+        <label for="sortBy">Sort By:</label>
+        <select name="sortBy">
+            <option value="capacity">Capacity</option>
+            <option value="name">Name</option>
+        </select>
+
+        <label for="order">Order:</label>
+        <select name="order">
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+        </select>
+
+        <button type="submit">Apply</button>
+    </form>
+
+    {% for stadium in stadiums %}
+        <div class="card">
+            <h3>{{ stadium.stadium }}</h3>
+            <p>Capacity: {{ stadium.capacity }}</p>
+    <p>Location: {{ stadium.country_name }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

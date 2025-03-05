@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clubs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Clubs</h1>
+    </header>
+
+    <form method="GET" action="{{ url_for('clubs') }}">
+        <label for="sortBy">Sort By:</label>
+        <select name="sortBy">
+            <option value="name">Name</option>
+            <option value="established_year">Established Year</option>
+        </select>
+
+        <label for="order">Order:</label>
+        <select name="order">
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+        </select>
+
+        <button type="submit">Apply</button>
+    </form>
+
+    {% for club in clubs %}
+        <div class="card">
+            <h3>{{ club.name }}</h3>
+            <p>Established: {{ club.year_of_establishment }}</p>
+            <p>Stadium: {{ club.stadium }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

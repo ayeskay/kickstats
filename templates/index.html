@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KickStats - Landing Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* Additional inline styles for layout */
+    .centered-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .form-container {
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+    }
+    .card {
+      width: 150px;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to KickStats</h1>
+  </header>
+
+  <!-- Centered Form for Selecting Player Attributes -->
+  <div class="centered-form">
+    <div class="form-container">
+      <h2>Find Players</h2>
+      <form method="GET" action="{{ url_for('players') }}">
+        <label for="position">Position:</label>
+        <select name="position" id="position">
+          <option value="">Any</option>
+          <option value="Forward">Forward</option>
+          <option value="Midfielder">Midfielder</option>
+          <option value="Defender">Defender</option>
+          <option value="Goalkeeper">Goalkeeper</option>
+        </select>
+        
+        <label for="club">Club:</label>
+        <select name="club" id="club">
+          <option value="">Any</option>
+          <option value="AC Milan">AC Milan</option>
+          <option value="Arsenal FC">Arsenal FC</option>
+          <option value="Bayer 04 Leverkusen">Bayer 04 Leverkusen</option>
+          <option value="Bayern Munich">Bayern Munich</option>
+          <option value="FC Barcelona">FC Barcelona</option>
+          <option value="Juventus">Juventus</option>
+          <option value="Liverpool FC">Liverpool FC</option>
+          <option value="Manchester City">Manchester City</option>
+		  <option value="Manchester United">Manchester United</option>
+		  <option value="Paris Saint Germain">Paris Saint Germain</option>
+		  <option value="Real Madrid">Real Madrid</option>
+        </select>
+        
+        <br><label for="market_value">Market Value:</label>
+        <select name="market_value" id="market_value">
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Card Container for Table Navigation Links -->
+  <div class="card-container">
+    <div class="card">
+      <a href="{{ url_for('players') }}">Players</a>
+    </div>
+    <div class="card">
+      <a href="{{ url_for('coaches') }}">Coaches</a>
+    </div>
+    <div class="card">
+      <a href="{{ url_for('countries') }}">Countries</a>
+    </div>
+    <div class="card">
+      <a href="{{ url_for('clubs') }}">Clubs</a>
+    </div>
+    <div class="card">
+      <a href="{{ url_for('stadiums') }}">Stadiums</a>
+    </div>
+    <div class="card">
+      <a href="{{ url_for('query') }}">Run Query</a>
+    </div>
+  </div>
+</body>
+</html>

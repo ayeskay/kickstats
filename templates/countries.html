@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Countries</h1>
+    </header>
+
+    <form method="GET" action="{{ url_for('countries') }}">
+        <label for="sortBy">Sort By:</label>
+        <select name="sortBy">
+            <option value="worldcups">World Cups</option>
+            <option value="ranking">Ranking</option>
+        </select>
+
+        <label for="order">Order:</label>
+        <select name="order">
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+        </select>
+
+        <button type="submit">Apply</button>
+    </form>
+
+    {% for country in countries %}
+        <div class="card">
+            <h3>{{ country.name }}</h3>
+            <p>Ranking: {{ country.ranking }}</p>
+            <p>World Cups: {{ country.worldcups }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Query Passthrough</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Query Passthrough</h1>
+    </header>
+    <center>
+	<form method="POST" action="{{ url_for('query') }}">
+        <textarea name="query" placeholder="Enter SQL query here">{{ query_text }}</textarea>
+        <br><button type="submit">Execute</button>
+    </form>
+
+    {% if results %}
+        <div class="result-container">
+            {% for row in results %}
+                <div class="row">
+                    {% for key, value in row.items() %}
+                        <p><strong>{{ key }}:</strong> {{ value }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</center>
+</body>
+</html>
